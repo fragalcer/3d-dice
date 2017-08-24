@@ -17,10 +17,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     float angleDice = 0;     // initial rotation degree for the dice.
     int speedDice = 0;  //rotational speed for dice.
     boolean diceWasThrown = false;
-    DiceNumber diceNumber;
-    public enum DiceNumber {ONE, TWO, THREE, FOUR, FIVE, SIX}
+    private DiceNumber diceNumber;
+    enum DiceNumber {ONE, TWO, THREE, FOUR, FIVE, SIX}
 
-    public MyGLRenderer(Context context) {
+    MyGLRenderer(Context context) {
         dice = new Dice(context);
     }
 
@@ -62,14 +62,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         gl.glLoadIdentity();
         gl.glTranslatef(0.0f, 0.0f, -6.0f);
 
-//        gl.glRotatef(angleDice, 0.15f, 1.0f, 0.3f);
-
         if (diceWasThrown) {
-
             gl.glRotatef(angleDice, 0.15f, 1.0f, 0.3f);
 
             switch (this.diceNumber) {
-
                 case ONE:
                     if (angleDice == 0) {
                         diceWasThrown = false;
@@ -124,7 +120,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         dice.draw(gl);
     }
 
-    public void diceNumberSetter(DiceNumber theDiceNumber) {
+    void diceNumberSetter(DiceNumber theDiceNumber) {
 
         this.diceNumber = theDiceNumber;
 
