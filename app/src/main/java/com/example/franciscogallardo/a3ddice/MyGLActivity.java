@@ -8,8 +8,6 @@ import android.view.View;
 
 import java.util.Random;
 
-import javax.microedition.khronos.opengles.GL;
-
 /**
  * Created by franciscogallardo on 17/8/17.
  */
@@ -34,7 +32,6 @@ public class MyGLActivity extends Activity {
 
                 Random random = new Random();
                 int diceThrow = random.nextInt(6) + 1;
-                myGLRenderer.diceWasThrown = true;
 
                 /*
                 * Heads up! :)
@@ -43,44 +40,40 @@ public class MyGLActivity extends Activity {
                 * after click.
                 * */
 
+                myGLRenderer.angleDice = 1080;
+                myGLRenderer.speedDice = 5;
+                myGLRenderer.fixX = 15;
+                myGLRenderer.fixY = 100;
+                myGLRenderer.fixZ = 30;
+
                 System.out.println(diceThrow);
-                switch (diceThrow) {
+//                switch (diceThrow) {
+                switch (4) {
                     case 1:
-                        myGLRenderer.angleDice = 1080;
-                        myGLRenderer.speedDice = 15;
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.ONE);
                         break;
                     case 2:
-                        myGLRenderer.angleDice = 1080;
-                        myGLRenderer.speedDice = 15;
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.TWO);
                         break;
+
                     case 3:
-                        myGLRenderer.angleDice = 1080;
-                        myGLRenderer.speedDice = 15;
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.THREE);
                         break;
+
                     case 4:
-                        myGLRenderer.angleDice = 1080;
-                        myGLRenderer.speedDice = 15;
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.FOUR);
+                        myGLRenderer.fix4 = 0;
                         break;
+
                     case 5:
-                        myGLRenderer.angleDice = 1080;
-                        myGLRenderer.speedDice = 15;
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.FIVE);
                         break;
                     case 6:
-                        myGLRenderer.angleDice = 1080;
-                        myGLRenderer.speedDice = 15;
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.SIX);
                         break;
                 }
-
-
             }
         });
-
     }
 
     @Override
