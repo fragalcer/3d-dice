@@ -47,8 +47,8 @@ public class MyGLActivity extends Activity {
                 myGLRenderer.fixZ = 30;
 
                 System.out.println(diceThrow);
-//                switch (diceThrow) {
-                switch (4) {
+                switch (diceThrow) {
+//                switch (4) {
                     case 1:
                         myGLRenderer.diceNumberSetter(MyGLRenderer.DiceNumber.ONE);
                         break;
