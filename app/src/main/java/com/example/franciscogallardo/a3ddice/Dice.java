@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -41,8 +43,23 @@ public class Dice {
         vertexBuffer = vbb.asFloatBuffer();
 
         for (int face = 0; face < numFaces; face++) {
-            bitmap[face] = BitmapFactory.decodeStream(
-                    context.getResources().openRawResource(imageFileIDs[face]));
+
+            InputStream is = context.getResources().openRawResource(imageFileIDs[face]);
+            try {
+                bitmap[face] = BitmapFactory.decodeStream(is);
+            } finally {
+                try {
+                    is.close();
+                    is = null;
+                } catch (IOException e) {
+                }
+            }
+
+
+
+
+//            bitmap[face] = BitmapFactory.decodeStream(
+//                    context.getResources().openRawResource());
             int imgWidth = bitmap[face].getWidth();
             int imgHeight = bitmap[face].getHeight();
             float faceWidth = 2.0f;
